@@ -28,11 +28,11 @@ The application uses Python with SQLAlchemy ORM for database interactions and Al
 1. **Clone the repository**
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/muthonii-web/library-Management-CLI-Project
 cd library-Management-CLI-Project
 ```
 
-2. **Set up Python environment**
+2.**Set up Python environment**
 
 This project uses Pipenv for dependency management. Install Pipenv if you don't have it:
 
@@ -40,19 +40,19 @@ This project uses Pipenv for dependency management. Install Pipenv if you don't 
 pip install pipenv
 ```
 
-3. **Install dependencies**
+3.**Install dependencies**
 
 ```bash
 pipenv install
 ```
 
-4. **Activate the virtual environment**
+4.**Activate the virtual environment**
 
 ```bash
 pipenv shell
 ```
 
-5. **Initialize the database**
+5.**Initialize the database**
 
 Run the CLI and choose option 1 to initialize the database schema:
 
@@ -79,6 +79,7 @@ python3 lib/cli.py
 You will see a menu with the following options:
 
 ```
+
 1. Init DB
 2. Add Author
 3. List Authors
@@ -128,10 +129,6 @@ The project uses SQLite database located at `lib/db/library.db`. The schema is m
 
 Feel free to fork the project and submit pull requests. Please ensure code quality and test thoroughly.
 
-## License
-
-This project is open source and available under the MIT License.
-
 ## Resources
 
 - [SQLAlchemy Documentation](https://docs.sqlalchemy.org/)
@@ -141,4 +138,3 @@ This project is open source and available under the MIT License.
 
 ---
 
-Happy coding and managing your library!
