@@ -37,3 +37,25 @@ class Book(Base):
 
     loans = relationship("Loan", back_populates="book", cascade="all, delete")
 
+class Member(Base):
+    __tablename__ = "members"
+
+    id = Column(Integer, primary_key=True)
+    name = Column(String)
+    email = Column(String)
+    phone = Column(String)
+
+    loans = relationship("Loan", back_populates="member", cascade="all, delete")
+
+class Loan(Base):
+    __tablename__ = "loans"
+
+    id = Column(Integer, primary_key=True)
+    loan_date = Column(DateTime)
+    return_date = Column(DateTime)
+
+    member_id = Column(Integer, ForeignKey("members.id"))
+    member = relationship("Member", back_populates="loans")
+
+    book_id = Column(Integer, ForeignKey("books.id"))
+    book = relationship("Book", back_populates="loans")
