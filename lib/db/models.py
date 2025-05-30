@@ -46,6 +46,8 @@ class Member(Base):
     phone = Column(String)
 
     loans = relationship("Loan", back_populates="member", cascade="all, delete")
+    fines = relationship("Fine", back_populates="member", cascade="all, delete")
+
 
 class Loan(Base):
     __tablename__ = "loans"
@@ -59,3 +61,14 @@ class Loan(Base):
 
     book_id = Column(Integer, ForeignKey("books.id"))
     book = relationship("Book", back_populates="loans")
+
+class Fine(Base):
+    __tablename__ = "fines"
+
+    id = Column(Integer, primary_key=True)
+    amount = Column(Integer, nullable=False)
+    reason = Column(String, nullable=False)
+    date_issued = Column(DateTime, nullable=False)
+
+    member_id = Column(Integer, ForeignKey("members.id"), nullable=False)
+    member = relationship("Member", back_populates="fines")
