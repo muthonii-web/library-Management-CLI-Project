@@ -14,3 +14,26 @@ Base = declarative_base()
 from sqlalchemy import Column, Integer, String, ForeignKey, DateTime
 
 from sqlalchemy.orm import relationship, declarative_base
+
+class Author(Base):
+    __tablename__ = "authors"
+
+    id = Column(Integer, primary_key=True)
+    name = Column(String)
+    biography = Column(String)
+
+    books = relationship("Book", back_populates="author", cascade="all, delete")
+
+class Book(Base):
+    __tablename__ = "books"
+
+    id = Column(Integer, primary_key=True)
+    title = Column(String)
+    genre = Column(String)
+    year = Column(Integer)
+
+    author_id = Column(Integer, ForeignKey("authors.id"))
+    author = relationship("Author", back_populates="books")
+
+    loans = relationship("Loan", back_populates="book", cascade="all, delete")
+
